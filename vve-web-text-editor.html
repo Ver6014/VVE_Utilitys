@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Editor</title>
+</head>
+<body>
+    <h1>Web Text Editor</h1>
+    <textarea id="textEditor" rows="10" cols="50" placeholder="Type your text here..."></textarea><br>
+    <button id="downloadBtn">Download as .txt</button>
+
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const text = document.getElementById('textEditor').value;
+            const blob = new Blob([text], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'document.txt';
+            link.click();
+        });
+    </script>
+</body>
+</html>
